@@ -18,6 +18,10 @@ export const metadata = {
   title: "Kodmadan Hardwares and Paints - Tenkasi - Kadayam",
 
   description: "Kodimadan Hardwares and Paints - Your trusted store for premium Asian Paints and hardware supplies in Tenkasi, Tamil Nadu. Quality products & expert advice!",
+  openGraph: {
+    title: 'Kodimadan Hardwares and Paints',
+    description: 'Your trusted store for premium Asian Paints and hardware supplies in Tenkasi, Tamil Nadu.',
+}
 };
 
 export default function RootLayout({ children }) {

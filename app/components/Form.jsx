@@ -26,7 +26,7 @@ const Form = () => {
     }
     const handleSendMail = async(formData) => {
         try{
-            const res = await axios.post("http://kodimadan-store.vercel.app/api/nodemailer",formData)
+            const res = await axios.post("https://kodimadan-store.vercel.app/api/nodemailer",formData)
         }catch(err) {
             console.log(err)
         }

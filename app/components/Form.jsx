@@ -5,6 +5,7 @@ import PageButton from './PageButton'
 import { HiArrowRight } from 'react-icons/hi2'
 import { sendError } from 'next/dist/server/api-utils'
 import { IoLogoWhatsapp } from "react-icons/io";
+import axios from 'axios'
 
 const Form = () => {
     const [name, setName] = useState("")
@@ -23,17 +24,31 @@ const Form = () => {
     const handleMessage = (message) =>{
         setMessage(message)
     }
+    const handleSendMail = async(formData) => {
+        try{
+            const res = await axios.post("http://localhost:3000/api/nodemailer",formData)
+        }catch(err) {
+            console.log(err)
+        }
+    }
     const handleSubmit = (e) => {
         if(name === "" || number === "" || addr === "" ){
             alert("Fill the form to submit")
         }else{
-        e.preventDefault(); // Prevent form refresh
+            e.preventDefault(); // Prevent form refresh
+            const formData = {
+                name,
+                addr,
+                number,
+                message
+            }
+            handleSendMail(formData)
     
-        const whatsappNumber = '9443919192'; // Replace this with your WhatsApp number
-        const formattedMessage = `${message} \n\n${name} ,\n${addr}\n${number}\n\nThank you for reaching out! We'll get back to you shortly.`;
-        
-        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedMessage)}`;
-        window.open(whatsappLink, '_blank');}
+            const whatsappNumber = '9443919192'; // Replace this with your WhatsApp number
+            const formattedMessage = `${message} \n\n${name} ,\n${addr}\n${number}\n\nThank you for reaching out! We'll get back to you shortly.`;
+            
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedMessage)}`;
+            window.open(whatsappLink, '_blank');}
     }
     
     

@@ -7,7 +7,6 @@ import Form from './components/Form'
 import Marquee from 'react-fast-marquee'
 
 const page = () => {
-  
   return (
     <div className='w-full flex flex-col justify-center items-center tracking-tighter'>
         <div className='w-full flex flex-col justify-center items-center'>
